@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 ;
@@ -58,6 +59,13 @@ public class VacunacionRestController {
         empleadoActual.setNombres(empleado.getNombres());
         empleadoActual.setApellidos(empleado.getApellidos());
         empleadoActual.setCorreo_electronico(empleado.getCorreo_electronico());
+        empleadoActual.setFechaNacimiento(empleado.getFecha_nacimiento());
+        empleadoActual.setDireccion(empleado.getDireccion());
+        empleadoActual.setTelefono_movil(empleado.getTelefono_movil());
+        empleadoActual.setEstado_vacunacion(empleado.getEstado_vacunacion());
+        empleadoActual.setTipo_vacuna(empleado.getTipo_vacuna());
+        empleadoActual.setFecha_vacunacion(empleado.getFecha_vacunacion());
+        empleadoActual.setNum_dosis(empleado.getNum_dosis());
         return empleadoService.save(empleadoActual);
     }
 
@@ -65,6 +73,17 @@ public class VacunacionRestController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer idempleado) {
         empleadoService.delete(idempleado);
+    }
+
+
+    @GetMapping("/empleados/filtros")
+    public List<Empleado> obtenerEmpleadosFiltrados(
+            @RequestParam(required = false) Empleado.EstadoVacunacion estado,
+            @RequestParam(required = false) Empleado.TipoVacuna tipo,
+            @RequestParam(required = false) LocalDate fechaInicio,
+            @RequestParam(required = false) LocalDate fechaFin) {
+
+        return empleadoService.filterEmpelados(estado, tipo, fechaInicio, fechaFin);
     }
 
     //Metodos para los usuarios
@@ -95,6 +114,7 @@ public class VacunacionRestController {
         usuarioActual.setIdusuario(usuario.getIdusuario());
         usuarioActual.setUsername(usuario.getUsername());
         usuarioActual.setPassword(usuario.getPassword());
+        usuarioActual.setRole(usuario.getRole());
         return usuarioService.save(usuarioActual);
     }
 

@@ -12,11 +12,13 @@ public class Usuario implements Serializable {
     private Integer idusuario;
     private String username;
     private String password;
+    private  String role;
+
+
 
     @ManyToOne
     @JoinColumn(name = "idempleado")
     private Empleado empleado;
-
 
     public Empleado getEmpleado() {
         return empleado;
@@ -50,7 +52,24 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "username='" + username + '\'' +
+                "role='" + role + '\'' +
+                '}';
+    }
 
 
     private static final long serialVersionUID=11;
+
+
 }

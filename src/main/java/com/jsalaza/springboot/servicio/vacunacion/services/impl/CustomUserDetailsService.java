@@ -28,11 +28,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         Usuario userEntity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
+
         // Convertir la entidad de usuario a un objeto UserDetails
         return new User(
                 userEntity.getUsername(),
                 userEntity.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
+                Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRole()))
         );
     }
 }

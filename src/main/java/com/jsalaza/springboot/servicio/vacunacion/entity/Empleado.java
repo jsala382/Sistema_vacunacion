@@ -9,8 +9,12 @@ import java.time.LocalDate;
 @Table
 public class Empleado implements Serializable {
 
+    public void setIdempleado(Integer idempleado) {
+        this.idempleado = idempleado;
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idempleado;
 
     @Column(unique = true)
@@ -21,16 +25,15 @@ public class Empleado implements Serializable {
 
     @Column(unique = true)
     private String correo_electronico;
-    private LocalDate fechaNacimiento;
+    private LocalDate fecha_nacimiento;
     private String Direccion;
-    private String telefonoMovil;
-
+    private String telefono_movil;
     @Enumerated(EnumType.STRING)
-    private EstadoVacunacion estadoVacunacion;
+    private EstadoVacunacion estado_vacunacion;
     @Enumerated(EnumType.STRING)
-    private TipoVacuna tipoVacuna;
-    private LocalDate fechaVacunacion;
-    private Integer numDosis;
+    private TipoVacuna tipo_vacuna;
+    private LocalDate fecha_vacunacion;
+    private Integer num_dosis;
 
     public Integer getIdempleado() {
         return idempleado;
@@ -68,12 +71,12 @@ public class Empleado implements Serializable {
         return correo_electronico;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaNacimiento(LocalDate fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
     }
 
     public String getDireccion() {
@@ -84,57 +87,73 @@ public class Empleado implements Serializable {
         Direccion = direccion;
     }
 
-    public String getTelefonoMovil() {
-        return telefonoMovil;
+
+
+    public String getTelefono_movil() {
+        return telefono_movil;
+    }
+    public void setTelefono_movil(String telefono_movil) {
+        this.telefono_movil = telefono_movil;
     }
 
-    public void setTelefonoMovil(String telefonoMovil) {
-        this.telefonoMovil = telefonoMovil;
+
+
+    public TipoVacuna getTipo_vacuna() {
+        return tipo_vacuna;
     }
 
-    public EstadoVacunacion getEstadoVacunacion() {
-        return estadoVacunacion;
+    public void setTipo_vacuna(TipoVacuna tipo_vacuna) {
+        this.tipo_vacuna= tipo_vacuna;
     }
 
-    public void setEstadoVacunacion(EstadoVacunacion estadoVacunacion) {
-        this.estadoVacunacion = estadoVacunacion;
+    public EstadoVacunacion getEstado_vacunacion() {
+        return estado_vacunacion;
     }
 
-    public TipoVacuna getTipoVacuna() {
-        return tipoVacuna;
+    public void setEstado_vacunacion(EstadoVacunacion estado_vacunacion) {
+        this.estado_vacunacion = estado_vacunacion;
     }
 
-    public void setTipoVacuna(TipoVacuna tipoVacuna) {
-        this.tipoVacuna = tipoVacuna;
+
+
+
+
+
+
+    public Integer getNum_dosis() {
+        return num_dosis;
     }
 
-    public LocalDate getFechaVacunacion() {
-        return fechaVacunacion;
+    public void setNum_dosis(Integer num_dosis) {
+        this.num_dosis = num_dosis;
     }
 
-    public void setFechaVacunacion(LocalDate fechaVacunacion) {
-        this.fechaVacunacion = fechaVacunacion;
-    }
 
-    public Integer getNumDosis() {
-        return numDosis;
-    }
-
-    public void setNumDosis(Integer numDosis) {
-        this.numDosis = numDosis;
-    }
 
     public enum EstadoVacunacion{
-        VACUNADO,
-        NO_VACUNADO
+        VACUNADO("Vacunado"),
+        NO_VACUNADO("No Vacunado");
+
+        EstadoVacunacion(String vacunado) {
+        }
     }
     public enum TipoVacuna{
-        SPUTNIK,
-        ASTRAZENECA,
-        PFIZER,
-        JOHNSON_JOHNSON
+        SPUTNIK("Sputnik"),
+        ASTRAZENECA("Astrazeneca"),
+        PFIZER("Pfizer"),
+        JOHNSON_JOHNSON("Johnson_Johnsson");
 
+        TipoVacuna(String sputnik) {
+        }
     }
+    public LocalDate getFecha_vacunacion() {
+        return fecha_vacunacion;
+    }
+
+    public void setFecha_vacunacion(LocalDate fecha_vacunacion) {
+        this.fecha_vacunacion = fecha_vacunacion;
+    }
+
 
     public void setCorreo_electronico(String correo_electronico) {
         this.correo_electronico = correo_electronico;
