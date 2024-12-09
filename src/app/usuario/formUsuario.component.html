@@ -1,0 +1,42 @@
+<div class="card bg-dark text-white">
+    <div class="car-header">{{titulo}}</div>
+    <div class="car-body"></div>
+
+    <form (ngSubmit)= "create()">
+        <div class="form-group row">
+            <label for="username" class="col-form-label col-sm-2">username</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]= "usuario.username" name= "username">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="password" class="col-form-label col-sm-2">password</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]= "usuario.password" name= "password">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="password" class="col-form-label col-sm-2">idempleado</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]= "usuario.idempleado" name= "idusuario">
+            </div>
+        </div>
+
+
+
+       
+        
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" role="button" (click)="updateUsuario()">Editar Usuario</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+

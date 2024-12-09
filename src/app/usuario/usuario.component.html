@@ -1,0 +1,36 @@
+<div class="card border-primary mb-3">
+    <div class="card-header">Usuario</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de Usuario</h5>
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>idusuario</th>
+                    <th>username</th>
+                    <th>password</th>
+                    <th>idempleado</th>
+                    <th>editar</th>
+                    <th>eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuarios">
+                    <td>{{usuario.idusuario}}</td>
+                    <td>{{usuario.username}}</td>
+                    <td>{{usuario.password}}</td>
+                    <td>{{ usuario.idempleado}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" name="editar" [routerLink]="['/usuario/formUsuario', usuario.idusuario]">editar</button>
+                    </td>
+                    <td >
+                        <button button   class="btn btn-danger"  (click)="deleteUsuario(usuario)"  type="button" name="editar" [routerLink]="['/usuario']">eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+            
+        </table>
+
+    </div>
+  </div>

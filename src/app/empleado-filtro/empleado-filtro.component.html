@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">Resultados del Filtro</div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cédula</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Estado Vacunación</th>
+            <th>Tipo Vacuna</th>
+            <th>Fecha Vacunación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados">
+            <td>{{ empleado.idempleado }}</td>
+            <td>{{ empleado.cedula }}</td>
+            <td>{{ empleado.nombres }}</td>
+            <td>{{ empleado.apellidos }}</td>
+            <td>{{ empleado.estado_vacunacion }}</td>
+            <td>{{ empleado.tipo_vacuna }}</td>
+            <td>{{ empleado.fecha_vacunacion }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

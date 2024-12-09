@@ -1,0 +1,140 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body"></div>
+
+    <form #formComponent="ngForm">
+        <div class="form-group row mb-3">
+            <label for="cedula" class="col-form-label col-sm-2">cedula</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.cedula" name="cedula" required
+                    minlength="10" maxlength="10" #cedula="ngModel">
+                <div *ngIf="cedula.invalid && cedula.touched" class="text-danger">
+                    <small *ngIf="cedula.errors?. ['required']">La cedula es obligatoria</small>
+                    <small *ngIf="cedula.errors?. ['minlength']">Debe tener 10 caracteres</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label for="nombres" class="col-form-label col-sm-2">nombres</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.nombres" name="nombres" required
+                    #nombres="ngModel">
+                <div *ngIf="nombres.invalid && nombres.touched" class="text-danger">
+                    <small *ngIf="nombres.errors?. ['required']">El campo nombre es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label for="apellidos" class="col-form-label col-sm-2">apellidos</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.apellidos" name="apellidos" required
+                    #apellidos="ngModel">
+                <div *ngIf="apellidos.invalid && apellidos.touched" class="text-danger">
+                    <small *ngIf="apellidos.errors?. ['required']">El campo apellido es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label for="correo_electronico" class="col-form-label col-sm-2">correo_electronico</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.correo_electronico"
+                    name="correo_electronico" required #correo_electronico="ngModel">
+                <div *ngIf="correo_electronico.invalid && correo_electronico.touched" class="text-danger">
+                    <small *ngIf="correo_electronico.errors?. ['required']">El campo correo_electronico es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label for="fecha_nacimiento" class="col-form-label col-sm-2">fecha_nacimiento</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" [(ngModel)]="empleado.fecha_nacimiento" name="fecha_nacimiento" required #fecha_nacimiento="ngModel">
+                <div *ngIf="fecha_nacimiento.invalid && fecha_nacimiento.touched" class="text-danger">
+                    <small *ngIf="fecha_nacimiento.errors?. ['required']">El campo fecha_nacimiento es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label for="direccion" class="col-form-label col-sm-2">direccion</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.direccion" name="direccion" required #direccion="ngModel">
+                <div *ngIf="direccion.invalid && direccion.touched" class="text-danger">
+                    <small *ngIf="direccion.errors?. ['required']">El campo direccion es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label for="telefono_movil" class="col-form-label col-sm-2">telefono_movil</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" [(ngModel)]="empleado.telefono_movil" name="telefono_movil" required #telefono_movil="ngModel">
+                <div *ngIf="telefono_movil.invalid && telefono_movil.touched" class="text-danger">
+                    <small *ngIf="telefono_movil.errors?. ['required']">El campo telefono_movil es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row mb-3">
+            <label for="estado_vacunacion" class="col-form-label col-sm-2">Estado de Vacunación:</label>
+            <div for="estado_vacunacion" class="col-sm-6">
+                <select id="estado_vacunacion" [(ngModel)]="empleado.estado_vacunacion"
+                    [ngModelOptions]="{standalone: true}">
+                    <option value="VACUNADO">Vacunado</option>
+                    <option value="NO_VACUNADO">No Vacunado</option>
+                </select>
+            </div>
+        </div>
+
+        <div *ngIf="empleado.estado_vacunacion === 'VACUNADO'" class="form-group row mb-3">
+            <label for="tipo_vacuna" class="col-form-label col-sm-2">Tipo de Vacuna:</label>
+            <div for="tipo_vacuna" class="col-sm-6">
+                <select id="tipo_vacuna" [(ngModel)]="empleado.tipo_vacuna" name="tipo_vacuna" required #tipo_vacuna="ngModel">
+                    <option value="SPUTNIK">Sputnik</option>
+                    <option value="ASTRAZENECA">AstraZeneca</option>
+                    <option value="PFIZER">Pfizer</option>
+                    <option value="JHONSON_JHONSON">Jhonson&Jhonson</option>
+                </select>
+                <div *ngIf="tipo_vacuna.invalid && tipo_vacuna.touched" class="text-danger">
+                    <small *ngIf="tipo_vacuna.errors?. ['required']">El campo tipo_vacuna es obligatorio</small>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label for="fecha_vacunacion" class="col-form-label col-sm-2">Fecha de Vacunación:</label>
+                <input type="date" id="fecha_vacunacion" [(ngModel)]="empleado.fecha_vacunacion"
+                    name="fecha_vacunacion" required #fecha_vacunacion="ngModel">
+                    <div *ngIf="fecha_vacunacion.invalid && fecha_vacunacion.touched" class="text-danger">
+                        <small *ngIf="fecha_vacunacion.errors?. ['required']">El campo fecha_vacunacion es obligatorio</small>
+                    </div>
+            </div>
+
+            <div>
+                <label for="numero_dosis" class="col-form-label col-sm-2">Número de Dosis:</label>
+                <input type="number" id="numero_dosis" [(ngModel)]="empleado.num_dosis" name="num_dosis" required #num_dosis="ngModel">
+                <div *ngIf="num_dosis.invalid && num_dosis.touched" class="text-danger">
+                    <small *ngIf="num_dosis.errors?. ['required']">El campo fecha_vacunacion es obligatorio</small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <button class="btn btn-primary" role="button" *ngIf="!empleado.idempleado else elseBlock"
+                    (click)="createEmpleado()" [disabled]="formComponent.invalid">Crear Empleado</button>
+                <ng-template #elseBlock>
+                    <button class="btn btn-primary" role="button" (click)="updateEmpleado()">Editar Empleado</button>
+                </ng-template>
+            </div>
+        </div>
+
+
+
+    </form>
+
+</div>

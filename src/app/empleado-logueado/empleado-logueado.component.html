@@ -1,0 +1,101 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">Mis Datos</div>
+    <div class="card-body">
+      <form>
+        <div class="form-group row">
+          <label for="cedula" class="col-form-label col-sm-2">Cédula</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="empleado.cedula" name="cedula" disabled />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="nombres" class="col-form-label col-sm-2">Nombres</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="empleado.nombres" name="nombres" />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="empleado.apellidos" name="apellidos" />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="correo_electronico" class="col-form-label col-sm-2">Correo Electrónico</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" [(ngModel)]="empleado.correo_electronico" name="correo_electronico" disabled />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="fecha_nacimiento" class="col-form-label col-sm-2">Fecha de Nacimiento</label>
+          <div class="col-sm-6">
+            <input type="date" class="form-control" [(ngModel)]="empleado.fecha_nacimiento" name="fecha_nacimiento" />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="direccion" class="col-form-label col-sm-2">Dirección</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="empleado.direccion" name="direccion" />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="telefono_movil" class="col-form-label col-sm-2">Teléfono Móvil</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="empleado.telefono_movil" name="telefono_movil" />
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="estado_vacunacion" class="col-form-label col-sm-2">Estado de Vacunación</label>
+          <div class="col-sm-6">
+            <select class="form-control" [(ngModel)]="empleado.estado_vacunacion" name="estado_vacunacion">
+              <option value="VACUNADO">Vacunado</option>
+              <option value="NO_VACUNADO">No Vacunado</option>
+            </select>
+          </div>
+        </div>
+  
+        <div *ngIf="empleado.estado_vacunacion === 'VACUNADO'">
+          <div class="form-group row">
+            <label for="tipo_vacuna" class="col-form-label col-sm-2">Tipo de Vacuna</label>
+            <div class="col-sm-6">
+              <select class="form-control" [(ngModel)]="empleado.tipo_vacuna" name="tipo_vacuna">
+                <option value="SPUTNIK">Sputnik</option>
+                <option value="ASTRAZENECA">AstraZeneca</option>
+                <option value="PFIZER">Pfizer</option>
+                <option value="JHONSON_JHONSON">Johnson & Johnson</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="fecha_vacunacion" class="col-form-label col-sm-2">Fecha de Vacunación</label>
+            <div class="col-sm-6">
+              <input type="date" class="form-control" [(ngModel)]="empleado.fecha_vacunacion" name="fecha_vacunacion" />
+            </div>
+          </div>
+  
+          <div class="form-group row">
+            <label for="numero_dosis" class="col-form-label col-sm-2">Número de Dosis</label>
+            <div class="col-sm-6">
+              <input type="number" class="form-control" [(ngModel)]="empleado.num_dosis" name="numero_dosis" />
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group row" >
+          <div class="col-sm-6">
+            <button class="btn btn-primary me-5" role="button" (click)="updateEmpleado()">Actualizar Datos</button>
+            <button class="btn btn-danger" role="button" (click)="logout()">Salir</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

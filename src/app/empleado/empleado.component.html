@@ -1,0 +1,92 @@
+<div class="card border-primary custom-width" *ngIf="isAdmin">
+    <div class="card-header">Empleado</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de Empleado</h5>
+
+      <div class="my-2 text-left" >
+        <button  class="btn btn-rounded btn-primary" type="button" [routerLink]="['/empleado/form']">Crear Empleado</button>
+      </div>
+
+      <div class="form-group my-3">
+        <label for="filtroTexto">Filtros:</label>
+        <input
+            type="text"
+            id="filtroTexto"
+            [(ngModel)]="filtroTexto"
+            class="form-control"
+            placeholder="Ingrese un valor a filtrar"
+        />
+
+        <div class="form-group my-3">
+            <label for="fechaInicio">Fecha Inicio:</label>
+            <input
+              type="date"
+              id="fechaInicio"
+              [(ngModel)]="fechaInicio"
+              class="form-control"
+            />
+          </div>
+      
+          <div class="form-group my-3">
+            <label for="fechaFin">Fecha Fin:</label>
+            <input
+              type="date"
+              id="fechaFin"
+              [(ngModel)]="fechaFin"
+              class="form-control"
+            />
+          </div>
+      
+        <button class="btn btn-primary btn-rounded mt-2" (click)="filtrarEmpleados()">Filtrar</button>
+    </div>
+     
+
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>idempleados</th>
+                    <th>cedula</th>
+                    <th>nombres</th>
+                    <th>apellidos</th>
+                    <th>correo_electronico</th>
+                    <th>fecha_nacimiento</th>
+                    <th>direccion</th>
+                    <th>telefono_movil</th>
+                    <th>estado_vacunacion</th>
+                    <th>tipo_vacuna</th>
+                    <th>fecha_vacunacion</th>
+                    <th>numero_dosis</th>
+
+                    <th>editar</th>
+                    <th>eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empleado of empleados">
+                    <td>{{empleado.idempleado}}</td>
+                    <td>{{ empleado.cedula}}</td>
+                    <td>{{ empleado.nombres}}</td>
+                    <td>{{ empleado.apellidos}}</td>
+                    <td>{{ empleado.correo_electronico}}</td>
+                    <td>{{ empleado.fecha_nacimiento}}</td>
+                    <td>{{ empleado.direccion}}</td>
+                    <td>{{ empleado.telefono_movil}}</td>
+                    <td>{{ empleado.estado_vacunacion}}</td>
+                    <td>{{ empleado.tipo_vacuna}}</td>
+                    <td>{{ empleado.fecha_vacunacion}}</td>
+                    <td>{{empleado.num_dosis}}</td>
+                    <td>
+                        <button type="button" name="editar" class="btn btn-rounded btn-primary" [routerLink]="['/empleado/form', empleado.idempleado]">editar</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-rounded btn-danger"    (click)="deleteEmpleado(empleado)"      [routerLink]="['/empleado']"> eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="my-2 text-left">
+            <button class=" btn btn-primary btn-rounded" routerLink="/login">Cerrar Sesion</button>
+        </div>
+    </div>
+  </div>
